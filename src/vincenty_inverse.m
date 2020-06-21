@@ -1,6 +1,13 @@
-function [distance,Alpha1,Alpha2]=vincenty_inverse(point1, point2)
+% Author :  Jiduocai Yang                                                       
+% Contact:  jiduocaiyang@gmail.com 
+% This programe is implemented in matlab 2019a
+% Adress: NUAA
+% License:  Copyright (c) 2019 Jiduocai Yang, All rights reserved  
+
 % point[latitude  longitude ]
-% distance between two points 
+% distance between two points
+function [distance,Alpha1,Alpha2]=vincenty_inverse(point1, point2)
+ 
 % WGS 84
 a = 6378137;  % meters
 f = 1 / 298.257223563;
