@@ -67,8 +67,12 @@ cosU2 = cos(U2);
         B = uSq / 1024 * (256 + uSq * (-128 + uSq * (74 - 47 * uSq)));
         deltaSigma = B * sinSigma * (cos2SigmaM + B / 4 * (cosSigma *(-1 + 2 * cos2SigmaM ^ 2) - B / 6 * cos2SigmaM *(-3 + 4 * sinSigma ^ 2) * (-3 + 4 * cos2SigmaM ^ 2)));
         s = b * A * (sigma - deltaSigma);
-        Alpha1 = atan(cosU2 * sinLambda / cosU1 * sinU2 - sinU1 * cosU2 * cosLambda);
-        Alpha2 = atan(cosU1 * sinLambda / (-sinU1) * cosU2 + cosU1 * sinU2 * cosLambda);
+        Alpha1 = atan2(cosU2 * sinLambda,  cosU1*sinU2-sinU1*cosU2*cosLambda);
+        Alpha1 = Alpha1*180/pi;
+        if (0 >= Alpha1 || Alpha1 > 360)
+             Alpha1 = mod(mod(Alpha1,360)+360,360); 
+        end
+        Alpha2 = atan2(cosU1 * sinLambda,  -sinU1*cosU2+cosU1*sinU2*cosLambda);
         distance = s * MILES_PER_KILOMETER;  % kilometers to miles
     else
         distance = 0;
